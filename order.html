@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="sass/style.css">
     <title>Grab your coffee!</title>
 </head>
+
 <body>
     <div class="wrap">
         <button class="back" onClick="location.href='index.html'">뒤로가기</button>
@@ -14,76 +16,17 @@
             <section class="sect__left">
                 <nav class="menu_tabs">
                     <ul>
-                        <li class="tab tab_coffee">Coffee</li>
-                        <li class="tab tab_tea">Tea</li>
-                        <li class="tab tab_sandwich">Sandwich</li>
+                        <li class="tab tab_coffee" onclick="selectTab(1)">Coffee</li>
+                        <li class="tab tab_tea" onclick="selectTab(2)">Tea</li>
+                        <li class="tab tab_sandwich" onclick="selectTab(3)">Sandwich</li>
                     </ul>
                 </nav>
                 <div class="left_content">
-                    <div class="wrap__left menu_area menu_coffee">
-                            <li class="menu">
-                                <p class="menu_name">
-                                    <span>아메리카노</span>
-                                </p>
-                                <p class="menu_price">3,000 원</p>
-                            </li>
-                            <li class="menu">
-                                <p class="menu_name">
-                                    <span>아이스</br>아메리카노</span>
-                                </p>
-                                <p class="menu_price">3,500 원</p>
-                            </li>
-                            <li class="menu">
-                                <p class="menu_name">
-                                    <span>카페라떼</span>
-                                </p>
-                                <p class="menu_price">4,000 원</p>
-                            </li>
-                            <li class="menu">
-                                <p class="menu_name">
-                                    <span>아이스</br>카페라떼</span>
-                                </p>
-                                <p class="menu_price">4,500 원</p>
-                            </li>
-                            <li class="menu">
-                                <p class="menu_name">
-                                    <span>바닐라빈라떼</span>
-                                </p>
-                                <p class="menu_price">4,500 원</p>
-                            </li>
-                            <li class="menu">
-                                <p class="menu_name">
-                                    <span>아이스</br>바닐라빈라떼</span>
-                                </p>
-                                <p class="menu_price">5,000 원</p>
-                            </li>
-                            <li class="menu">
-                                <p class="menu_name">
-                                    <span>캐러멜라떼</span>
-                                </p>
-                                <p class="menu_price">4,500 원</p>
-                            </li>
-                            <li class="menu">
-                                <p class="menu_name">
-                                    <span>아이스</br>캐러멜라떼</span>
-                                </p>
-                                <p class="menu_price">5,000 원</p>
-                            </li>
-                            <li class="menu">
-                                <p class="menu_name">
-                                    <span>카페모카</span>
-                                </p>
-                                <p class="menu_price">4,500 원</p>
-                            </li>
-                            <li class="menu">
-                                <p class="menu_name">
-                                    <span>아이스</br>카페모카</span>
-                                </p>
-                                <p class="menu_price">5,000 원</p>
-                            </li>
+                    <div class="wrap__left menu_area" id="menu_area">
+
                     </div>
 
-                    <div class="wrap__left menu_area menu_tea">
+                    <!-- <div class="wrap__left menu_area menu_tea">
                         <li class="menu">
                             <p class="menu_name">
                                 <span>얼그레이</span>
@@ -189,10 +132,10 @@
                             </p>
                             <p class="menu_price">6,500 원</p>
                         </li>
-                    </div>
+                    </div> -->
                 </div>
             </section>
-    
+
             <section class="sect__right">
                 <div class="cart_title">선택메뉴</div>
                 <div class="cart_content">
@@ -215,7 +158,7 @@
                                 <span>3,000원</span>
                             </div>
                         </div>
-    
+
                         <div class="cart_item">
                             <div class="top">
                                 <span>아이스바닐라빈라떼</span>
@@ -234,7 +177,7 @@
                                 <span>5,000원</span>
                             </div>
                         </div>
-    
+
                         <div class="cart_item">
                             <div class="top">
                                 <span>카페모카</span>
@@ -253,7 +196,7 @@
                                 <span>9,000원</span>
                             </div>
                         </div>
-    
+
                     </div>
                     <div class="wrap__checkout">
                         <div class="wrap__total total_quantity">
@@ -264,12 +207,15 @@
                             <span>결제금액</span>
                             <span>11,000원</span>
                         </div>
-                        <button type="button" class="btn_line btn_lg payment" onClick="location.href='payment.html'">결제하기</button>
+                        <button type="button" class="btn_line btn_lg payment"
+                            onClick="location.href='payment.html'">결제하기</button>
                     </div>
                 </div>
             </section>
         </div>
 
     </div>
+    <script type="text/javascript" src="js/order.js"></script>
 </body>
+
 </html>
