@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="sass/style.css">
+    <title>Grab your coffee!</title>
+</head>
+<body>
+    <div class="wrap">
+        <button class="back" onClick="location.href='order.html'">뒤로가기</button>
+        <div class="wrap__sects payment">
+            <section class="sect__left">
+                <div class="left_content">
+                    <div class="wrap__left">
+                        <div>
+                            <p>결제수단선택</p>
+                        </div>
+                        <button class="btn_lg" onClick="location.href='processing_card.html'">체크/신용카드</button>
+                        <button class="btn_lg" onClick="location.href='processing_nfc.html'">NFC결제</button>
+                        <button class="btn_lg" onClick="location.href='processing_cash.html'">현금결제</button>
+                    </div>
+                </div>
+            </section>
+    
+            <section class="sect__right">
+                <div class="cart_title">선택메뉴</div>
+                <div class="cart_content">
+                    <div class="wrap__cart">
+                        <div class="cart_item">
+                            <div class="top">
+                                <span>아이스 아메리카노</span>
+                                <button type="button" class="delete">X</button>
+                            </div>
+                            <div class="middle">
+                                <span>수량</span>
+                                <div class="wrap__quantity">
+                                    <button type="button" class="plus">+</button>
+                                    <span class="item_quantity">1</span>
+                                    <button type="button" class="minus">-</button>
+                                </div>
+                            </div>
+                            <div class="bottom">
+                                <span>가격</span>
+                                <span>3,000원</span>
+                            </div>
+                        </div>
+    
+                        <div class="cart_item">
+                            <div class="top">
+                                <span>아이스바닐라빈라떼</span>
+                                <button type="button" class="delete">X</button>
+                            </div>
+                            <div class="middle">
+                                <span>수량</span>
+                                <div class="wrap__quantity">
+                                    <button type="button" class="plus">+</button>
+                                    <span class="item_quantity">1</span>
+                                    <button type="button" class="minus">-</button>
+                                </div>
+                            </div>
+                            <div class="bottom">
+                                <span>가격</span>
+                                <span>5,000원</span>
+                            </div>
+                        </div>
+    
+                        <div class="cart_item">
+                            <div class="top">
+                                <span>카페모카</span>
+                                <button type="button" class="delete">X</button>
+                            </div>
+                            <div class="middle">
+                                <span>수량</span>
+                                <div class="wrap__quantity">
+                                    <button type="button" class="plus">+</button>
+                                    <span class="item_quantity">2</span>
+                                    <button type="button" class="minus">-</button>
+                                </div>
+                            </div>
+                            <div class="bottom">
+                                <span>가격</span>
+                                <span>9,000원</span>
+                            </div>
+                        </div>
+    
+                    </div>
+                    <div class="wrap__checkout">
+                        <div class="wrap__total total_quantity">
+                            <span>선택수량</span>
+                            <span>4</span>
+                        </div>
+                        <div class="wrap__total total_price">
+                            <span>결제금액</span>
+                            <span>11,000원</span>
+                        </div>
+                        <button type="button" class="btn_line btn_lg payment">결제진행중</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </div>
+</body>
+</html>
