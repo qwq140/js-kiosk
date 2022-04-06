@@ -319,9 +319,9 @@ body .ir_su {
   display: none;
 }
 
-/* .wrap .wrap__sects .sect__left .left_content .menu_sandwich {
+.wrap .wrap__sects .sect__left .left_content .menu_sandwich {
   display: none;
-} */
+}
 
 .wrap .wrap__sects .sect__right {
   width: 40%;
