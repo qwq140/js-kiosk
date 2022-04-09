@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="sass/style.css">
     <title>Grab your coffee!</title>
 </head>
+
 <body>
     <div class="wrap">
         <button class="back" onClick="location.href='payment.html'">뒤로가기</button>
@@ -14,6 +16,9 @@
         <div class="wrap__sects">
             <p>휴대전화를 단말기 오른쪽에 접촉해 주세요.</p>
         </div>
+        <button class="btn_lg" onclick="success('nfc')">결제하기</button>
     </div>
+    <script type="text/javascript" src="js/payment_processing.js"></script>
 </body>
+
 </html>

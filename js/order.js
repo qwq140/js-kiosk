@@ -241,9 +241,16 @@ const viewSelectMenu = (menu) => {
 // 메뉴에서 선택
 const selectMenu = (id) => {
     let selectMenu = menu.find((e) => e.id == id);
-    selectMenu.count = 1;
-    orderMenu.push(selectMenu);
-    viewSelectMenu(selectMenu);
+    let orderMenuItem = orderMenu.find((e) => e.id == id);
+    if (orderMenuItem == null) {
+        selectMenu.count = 1;
+        orderMenu.push(selectMenu);
+        viewSelectMenu(selectMenu);
+    } else {
+        orderMenuItem.count++;
+        document.getElementById(`order_${id}`).innerText = orderMenuItem.count;
+        document.getElementById(`order_price_${id}`).innerText = `${(orderMenuItem.price * orderMenuItem.count).toLocaleString()}원`;
+    }
     orderInfoRefresh();
 }
 
