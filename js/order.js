@@ -191,11 +191,10 @@ const selectTab = (tabNum) => {
             temp = menu.filter(e => e.category == 'sandwich');
             break;
     }
-    print(temp);
     view(temp);
 }
 
-const orderMenu = [];
+let orderMenu = [];
 
 let totalCount = 0;
 let totalPrice = 0;
@@ -207,6 +206,7 @@ const orderInfoRefresh = () => {
         totalCount += e.count;
         totalPrice += e.price * e.count;
     });
+    console.log(orderMenu);
     document.getElementById('totalQuantitySpan').innerText = totalCount;
     document.getElementById('totalPriceSpan').innerText = `${totalPrice.toLocaleString()}원`;
 }
@@ -216,19 +216,19 @@ const viewSelectMenu = (menu) => {
     let html = `<div class="cart_item" id="cart_item_${menu.id}">
                             <div class="top">
                                 <span>${menu.name}</span>
-                                <button type="button" class="delete">X</button>
+                                <button type="button" class="delete" onclick="orderDelete(${menu.id})">X</button>
                             </div>
                             <div class="middle">
                                 <span>수량</span>
                                 <div class="wrap__quantity">
-                                    <button type="button" class="plus">+</button>
-                                    <span class="item_quantity">${menu.count}</span>
-                                    <button type="button" class="minus">-</button>
+                                    <button type="button" class="plus" onclick="add(${menu.id})">+</button>
+                                    <span class="item_quantity" id="order_${menu.id}">${menu.count}</span>
+                                    <button type="button" class="minus" onclick="minus(${menu.id})">-</button>
                                 </div>
                             </div>
                             <div class="bottom">
                                 <span>가격</span>
-                                <span>${menu.price.toLocaleString()}원</span>
+                                <span id="order_price_${menu.id}">${menu.price.toLocaleString()}원</span>
                             </div>
                         </div>`;
     cartArea.insertAdjacentHTML("beforeend", html);
@@ -242,9 +242,40 @@ const selectMenu = (id) => {
     orderInfoRefresh();
 }
 
+const orderDelete = (id) => {
+    // console.log(id);
+    orderMenu = orderMenu.filter((e) => e.id != id);
+    document.getElementById(`cart_item_${id}`).remove();
+    orderInfoRefresh();
+}
+
+const add = (id) => {
+    let item = orderMenu.find((e) => e.id == id);
+    item.count++;
+    document.getElementById(`order_${id}`).innerText = item.count;
+    document.getElementById(`order_price_${id}`).innerText = `${(item.price * item.count).toLocaleString()}원`;
+    orderInfoRefresh();
+}
+
+const minus = (id) => {
+    let item = orderMenu.find((e) => e.id == id);
+    if (item.count > 1) {
+        item.count--;
+        document.getElementById(`order_${id}`).innerText = item.count;
+        document.getElementById(`order_price_${id}`).innerText = `${(item.price * item.count).toLocaleString()}원`;
+        orderInfoRefresh();
+    }
+}
+
+const goPaymentPage = () => {
+    localStorage.setItem('orderMenu', JSON.stringify(orderMenu));
+    location.href = 'payment.html';
+}
+
 window.onload = () => {
     download();
     selectTab(1);
+    console.log('테스트');
     document.getElementById('totalQuantitySpan').innerText = totalCount;
     document.getElementById('totalPriceSpan').innerText = `${totalPrice.toLocaleString()}원`;
 }
