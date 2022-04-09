@@ -5,7 +5,7 @@ let totalPrice = 0;
 
 const goBack = () => {
     localStorage.setItem('orderMenu', JSON.stringify(orderMenu));
-    history.back();
+    location.href = 'order.html';
 }
 
 const orderInfoRefresh = () => {
