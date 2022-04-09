@@ -3,6 +3,11 @@ let orderMenu = [];
 let totalCount = 0;
 let totalPrice = 0;
 
+const goBack = () => {
+    localStorage.setItem('orderMenu', JSON.stringify(orderMenu));
+    history.back();
+}
+
 const orderInfoRefresh = () => {
     totalCount = 0;
     totalPrice = 0;

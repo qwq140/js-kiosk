@@ -1,5 +1,10 @@
 let menu = [];
 
+let orderMenu = [];
+
+let totalCount = 0;
+let totalPrice = 0;
+
 const download = () => {
     menu = [
         {
@@ -167,6 +172,7 @@ const download = () => {
     ];
 }
 
+// 메뉴를 화면에 그려주는 역할
 const view = (list) => {
     let menuArea = document.getElementById('menu_area');
     while (menuArea.hasChildNodes()) {
@@ -178,6 +184,8 @@ const view = (list) => {
     });
 }
 
+// 커피 탭인지 차 탭인지 샌드위치 탭인지 선택
+// 1 : 커피, 2 : 차, 3 : 샌드위치
 const selectTab = (tabNum) => {
     let temp = [];
     switch (tabNum) {
@@ -194,11 +202,7 @@ const selectTab = (tabNum) => {
     view(temp);
 }
 
-let orderMenu = [];
-
-let totalCount = 0;
-let totalPrice = 0;
-
+// 토탈 상품 갯수, 토탈 금액 리프레시
 const orderInfoRefresh = () => {
     totalCount = 0;
     totalPrice = 0;
@@ -206,11 +210,11 @@ const orderInfoRefresh = () => {
         totalCount += e.count;
         totalPrice += e.price * e.count;
     });
-    console.log(orderMenu);
     document.getElementById('totalQuantitySpan').innerText = totalCount;
     document.getElementById('totalPriceSpan').innerText = `${totalPrice.toLocaleString()}원`;
 }
 
+// 선택한 메뉴를 화면에 뿌림
 const viewSelectMenu = (menu) => {
     let cartArea = document.getElementById('cart_area');
     let html = `<div class="cart_item" id="cart_item_${menu.id}">
@@ -234,6 +238,7 @@ const viewSelectMenu = (menu) => {
     cartArea.insertAdjacentHTML("beforeend", html);
 }
 
+// 메뉴에서 선택
 const selectMenu = (id) => {
     let selectMenu = menu.find((e) => e.id == id);
     selectMenu.count = 1;
@@ -242,13 +247,14 @@ const selectMenu = (id) => {
     orderInfoRefresh();
 }
 
+// 주문 리스트에서 해당 상품 삭제
 const orderDelete = (id) => {
-    // console.log(id);
     orderMenu = orderMenu.filter((e) => e.id != id);
     document.getElementById(`cart_item_${id}`).remove();
     orderInfoRefresh();
 }
 
+// 주문 내역에서 갯수 증가
 const add = (id) => {
     let item = orderMenu.find((e) => e.id == id);
     item.count++;
@@ -257,6 +263,7 @@ const add = (id) => {
     orderInfoRefresh();
 }
 
+// 주문 내역에서 갯수 감소
 const minus = (id) => {
     let item = orderMenu.find((e) => e.id == id);
     if (item.count > 1) {
@@ -268,14 +275,34 @@ const minus = (id) => {
 }
 
 const goPaymentPage = () => {
+    // 결제 페이지로 이동할 때 order 리스트를 보관하기 위해 로컬스토리지 사용
+    if (orderMenu.length === 0) {
+        alert('메뉴를 적어도 한 개 선택해주세요');
+        return;
+    }
     localStorage.setItem('orderMenu', JSON.stringify(orderMenu));
+    // 결제 페이지 이동
     location.href = 'payment.html';
 }
 
+// 첫 시작
 window.onload = () => {
+    // 결제 페이지에서 주문 페이지로 뒤로가기 했을 때 데이터 불러오기
+    if (localStorage.getItem("orderMenu") != '') {
+        orderMenu = JSON.parse(localStorage.getItem("orderMenu"));
+    }
     download();
+    // 주문 페이지의 시작 탭은 커피탭
     selectTab(1);
-    console.log('테스트');
-    document.getElementById('totalQuantitySpan').innerText = totalCount;
-    document.getElementById('totalPriceSpan').innerText = `${totalPrice.toLocaleString()}원`;
+    if (orderMenu.length === 0) {
+        // 로컬스토리지에서 불러온 메뉴가 0일 때
+        document.getElementById('totalQuantitySpan').innerText = totalCount;
+        document.getElementById('totalPriceSpan').innerText = `${totalPrice.toLocaleString()}원`;
+    } else {
+        // 로컬스토리지에서 불러온 메뉴가 있을 때 즉, 결제 페이지에서 뒤로가기로 왔을 경우
+        orderMenu.forEach((e) => {
+            viewSelectMenu(e);
+        });
+        orderInfoRefresh();
+    }
 }
