@@ -1,6 +1,6 @@
 let timer = setTimeout(() => {
     location.href = 'result_fail.html';
-}, 60000);
+}, 5000);
 
 const success = (method) => {
     switch (method) {
