@@ -10,10 +10,28 @@
 </head>
 
 <body>
+    <div class="modal">
+        <div class="receipt">
+            <header class="receipt__header">
+                <p class="receipt__title">
+                    Coffee Shop
+                </p>
+                <p class="receipt__date" id="receipt_date"></p>
+            </header>
+            <dl class="receipt__list" id="receipt_list">
+                <div class="receipt__list-row receipt__list-row--total" id="receipt_total">
+                    <dt class="receipt__item">Total</dt>
+                    <dd class="receipt__cost" id="total_price"></dd>
+                </div>
+            </dl>
+        </div>
+    </div>
     <div class="wrap">
         <div class="wrap__result">
             <h1>결제완료</h1>
             <p class="announce_result">주문이 성공적으로 완료되었습니다!</br>거스름돈과 티켓을 꼭 챙겨주세요.</p>
+            <br>
+            <button class="btn_lg btn-open-popup">영수증</button>
         </div>
     </div>
     <script type="text/javascript" src="js/payment_result.js"></script>
