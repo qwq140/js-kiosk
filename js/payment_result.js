@@ -1,10 +1,7 @@
-// document.onmousedown = function leftClick() {
-//     location.href = 'index.html';
-// };
-
 const body = document.querySelector('body');
 const modal = document.querySelector('.modal');
 const btnOpenPopup = document.querySelector('.btn-open-popup');
+const btnFirstMove = document.querySelector('#first_move_btn');
 
 btnOpenPopup.addEventListener('click', () => {
     modal.classList.toggle('show');
@@ -22,6 +19,11 @@ modal.addEventListener('click', (event) => {
             body.style.overflow = 'auto';
         }
     }
+});
+
+btnFirstMove.addEventListener('click', () => {
+   localStorage.setItem('orderMenu', '');
+   location.href = 'index.html';
 });
 
 
